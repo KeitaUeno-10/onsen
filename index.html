@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6月21-22日 温泉旅行比較（4候補）</title>
+    <style>
+        body {
+            font-family: 'Meiryo', 'Hiragino Kaku Gothic Pro', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .filter-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #ecf0f1;
+            border-radius: 5px;
+        }
+        .filter-group {
+            display: inline-block;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        select, input {
+            padding: 5px;
+            border: 1px solid #bdc3c7;
+            border-radius: 3px;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #e3f2fd;
+        }
+        .highlight-castle { background-color: #e8f5e9; }
+        .highlight-arima { background-color: #fff3e0; }
+        .highlight-ogoto { background-color: #e1f5fe; }
+        .link-cell {
+            min-width: 120px;
+        }
+        .link-cell a {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            width: 100px;
+        }
+        .link-cell a:hover {
+            background-color: #2980b9;
+        }
+        .notes {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            line-height: 1.4;
+        }
+        .price {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 1.1em;
+        }
+        .hotel-name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .feature-list li {
+            background: #ecf0f1;
+            margin: 3px 0;
+            padding: 5px 8px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        .legend {
+            margin-top: 20px;
+            padding: 15px;
+            background: #ecf0f1;
+            border-radius: 5px;
+        }
+        .legend h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .summary {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+        }
+        .summary h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .pros, .cons {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .pros h4 {
+            color: #27ae60;
+            margin-top: 0;
+        }
+        .cons h4 {
+            color: #e74c3c;
+            margin-top: 0;
+        }
+
+        /* レスポンシブ対応の修正版 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 10px;
+                margin: 5px;
+                border-radius: 5px;
+            }
+            
+            h1 {
+                font-size: 1.4em;
+                line-height: 1.2;
+                padding-bottom: 8px;
+                margin-bottom: 15px;
+            }
+            
+            .filter-section {
+                padding: 10px;
+                margin: 15px 0;
+            }
+            
+            .filter-group {
+                display: block;
+                margin-bottom: 12px;
+                width: 100%;
+                margin-right: 0;
+            }
+            
+            .filter-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-size: 14px;
+            }
+            
+            .filter-group select {
+                width: 100%;
+                padding: 8px 12px;
+                font-size: 16px;
+                border: 2px solid #bdc3c7;
+                border-radius: 5px;
+                background-color: white;
+                box-sizing: border-box;
+            }
+            
+            /* テーブルのスクロール対応 */
+            .table-container {
+                overflow-x: auto;
+                margin-top: 15px;
+            }
+            
+            table {
+                font-size: 0.8em;
+                min-width: 800px;
+            }
+            
+            th, td {
+                padding: 6px;
+                font-size: 0.9em;
+            }
+            
+            .hotel-name {
+                font-size: 0.85em;
+            }
+            
+            .price {
+                font-size: 0.9em;
+            }
+            
+            .feature-list li {
+                font-size: 0.75em;
+                padding: 2px 4px;
+                margin: 2px 0;
+            }
+            
+            .link-cell a {
+                width: 70px;
+                padding: 4px 6px;
+                font-size: 11px;
+            }
+            
+            .pros-cons {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .summary {
+                padding: 12px;
+                margin-top: 20px;
+            }
+            
+            .notes {
+                font-size: 0.8em;
+            }
+        }
+
+        /* さらに小さな画面用 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 8px;
+                margin: 2px;
+            }
+            
+            h1 {
+                font-size: 1.2em;
+            }
+            
+            table {
+                font-size: 0.7em;
+                min-width: 700px;
+            }
+            
+            th, td {
+                padding: 4px;
+            }
+            
+            .filter-group select {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>6月21-22日（土日）温泉旅行比較資料</h1>
+        
+        <div class="filter-section">
+            <div class="filter-group">
+                <label for="locationFilter">地域:</label>
+                <select id="locationFilter">
+                    <option value="">全て</option>
+                    <option value="城崎温泉">城崎温泉</option>
+                    <option value="有馬温泉">有馬温泉</option>
+                    <option value="おごと温泉">おごと温泉</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="bathFilter">お風呂タイプ:</label>
+                <select id="bathFilter">
+                    <option value="">全て</option>
+                    <option value="客室付き">客室付き風呂</option>
+                    <option value="大浴場">大浴場のみ</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="hotelTable">
+                <thead>
+                    <tr>
+                        <th>宿名・立地</th>
+                        <th>料金（4名1泊／1人当たり）</th>
+                        <th>お風呂</th>
+                        <th>料理・特徴</th>
+                        <th>大阪からアクセス</th>
+                        <th>6月おすすめポイント</th>
+                        <th>楽天トラベル</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight-castle">
+                        <td>
+                            <div class="hotel-name">城崎温泉 山本屋</div>
+                            <div class="notes">
+                                温泉街中心部・柳並木沿い<br>
+                                一の湯隣・外湯7湯巡り無料
+                            </div>
+                        </td>
+                        <td>
+                            <div class="price">116,800円 / 29,200円</div>
+                            <div class="notes">（総額 / 1人当たり）</div>
+                        </td>
+                        <td>
+                            <ul class="feature-list">
+                                <li>客室付き：半露天風呂付き客室</li>
+                                <li>大浴場（男女別・露天風呂あり）</li>
+                                <li>貸切露天「仙遊」（40分1,100円）</li>
+                                <li>外湯巡り無料パス付</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul class="feature-list">
+                                <li><strong>活けアワビのバター焼き付き</strong></li>
+                                <li>季節の会席（茹で蟹・お造り等）</li>
+                                <li>お食事処での食事</li>
+                                <li>色浴衣レンタル（1,100円）</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <div class="notes">
+                                約2.5時間<br>
+                                JR特急きのさき直通
+                            </div>
+                        </td>
+                        <td>
+                            <div class="notes">
+                                • 浴衣で外湯巡りが涼しく快適<br>
+                                • 6月上旬は蛍鑑賞シーズン<br>
+                                • 温泉街散策に最適な立地
+                            </div>
+                        </td>
+                        <td class="link-cell">
+                            <a href="https://hotel.travel.rakuten.co.jp/hotelinfo/plan/28142?f_nen2=2025&f_tuki1=06&f_tuki2=06&f_nen1=2025&f_heya_su=1&f_hi2=22&f_camp_id=2938486&f_s2=0&f_s1=0&f_y4=0&f_syu=j17&f_y3=0&f_hi1=21&f_y2=0&f_otona_su=4&f_y1=0&l-id=hotelList_2_28142" target="_blank">詳細を見る</a>
+                        </td>
+                    </tr>
+                    <tr class="highlight-castle">
+                        <td>
+                            <div class="hotel-name">城崎温泉 お宿 白山 花まんだら</div>
+                            <div class="notes">
+                                【湯亭 花のれん】<br>
+                                ※ひかりとりなとれのんが行ってたところ
+                            </div>
+                        </td>
+                        <td>
+                            <div class="price">116,800円 / 29,200円</div>
+                            <div class="notes">（総額 / 1人当たり）</div>
+                        </td>
+                        <td>
+                            <ul class="feature-list">
+                                <li>客室付き：露天風呂付客室</li>
+                                <li>4湯貸切温泉無料</li>
+                                <li>オンリー湯は源泉かけ流し</li>
+                                <li>アヒルちゃん風呂サービス</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul class="feature-list">
+                                <li><strong>活あわび踊り焼き</strong></li>
+                                <li><strong>但馬牛陶板焼き約50g</strong></li>
+                                <li>旬魚5種舟盛り合わせ</li>
+                                <li>朝夕部屋食</li>
+                                <li>色浴衣・発泡酒1本付</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <div class="notes">
+                                約2.5時間<br>
+                                JR特急きのさき直通
+                            </div>
+                        </td>
+                        <td>
+                            <div class="notes">
+                                • 6月上旬：蛍鑑賞可能<br>
+                                • 但馬牛＋アワビの豪華グルメ<br>
+                                • 4湯貸切で密を避けてゆっくり
+                            </div>
+                        </td>
+                        <td class="link-cell">
+                            <a href="https://hotel.travel.rakuten.co.jp/hotelinfo/plan/14074?f_nen2=2025&f_tuki1=06&f_tuki2=06&f_nen1=2025&f_heya_su=1&f_hi2=22&f_camp_id=5507275&f_s2=0&f_s1=0&f_y4=0&f_syu=roten&f_y3=0&f_hi1=21&f_y2=0&f_otona_su=4&f_y1=0&l-id=hotelList_3_14074" target="_blank">詳細を見る</a>
+                        </td>
+                    </tr>
+                    <tr class="highlight-arima">
+                        <td>
+                            <div class="hotel-name">有馬温泉 有馬御苑</div>
+                            <div class="notes">
+                                楽天トラベルアワード2024<br>
+                                ゴールド&TOP47受賞
+                            </div>
+                        </td>
+                        <td>
+                            <div class="price">130,000円 / 32,500円</div>
+                            <div class="notes">
+                                （総額 / 1人当たり）<br>
+                                <strong>ポイント10倍</strong>
+                            </div>
+                        </td>
+                        <td>
+                            <ul class="feature-list">
+                                <li>大浴場：天然金泉・銀泉</li>
+                                <li>有馬温泉の名湯を満喫</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul class="feature-list">
+                                <li><strong>神戸牛しゃぶしゃぶ1.5倍増量</strong></li>
+                                <li>季節の和会席</li>
+                                <li>朝夕部屋食または個室</li>
+                                <li>1日2室限定の特別プラン</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <div class="notes">
+                                約1時間<br>
+                                電車で直通アクセス
+                            </div>
+                        </td>
+                        <td>
+                            <div class="notes">
+                                • アクセス抜群の近さ<br>
+                                • 神戸牛増量の限定プラン<br>
+                                • 新緑の六甲山観光も楽しめる
+                            </div>
+                        </td>
+                        <td class="link-cell">
+                            <a href="https://hotel.travel.rakuten.co.jp/hotelinfo/plan/1206?f_nen2=2025&f_tuki1=06&f_tuki2=06&f_nen1=2025&f_heya_su=1&f_hi2=22&f_camp_id=5389181&f_s2=0&f_s1=0&f_y4=0&f_syu=nssd&f_y3=0&f_hi1=21&f_y2=0&f_otana_su=4&f_y1=0&l-id=hotelList_1_1206" target="_blank">詳細を見る</a>
+                        </td>
+                    </tr>
+                    <tr class="highlight-ogoto">
+                        <td>
+                            <div class="hotel-name">おごと温泉 暖灯館 きくのや</div>
+                            <div class="notes">
+                                琵琶湖畔・レイクサイド<br>
+                                全室湖側客室
+                            </div>
+                        </td>
+                        <td>
+                            <div class="price">99,640円 / 24,910円</div>
+                            <div class="notes">（総額 / 1人当たり）</div>
+                        </td>
+                        <td>
+                            <ul class="feature-list">
+                                <li>大浴場：1,200年の歴史・おごと温泉</li>
+                                <li>アルカリ性単純温泉（美肌効果）</li>
+                                <li>展望貸切露天風呂（5,500円/60分）</li>
+                                <li>琵琶湖ビューの大浴場</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul class="feature-list">
+                                <li><strong>季節の旬な食材会席約10品</strong></li>
+                                <li>京都・滋賀の地元食材</li>
+                                <li>夕食部屋食</li>
+                                <li>テラスラウンジでフリードリンク</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <div class="notes">
+                                約1.5時間<br>
+                                JR湖西線直通<br>
+                                駅から無料送迎
+                            </div>
+                        </td>
+                        <td>
+                            <div class="notes">
+                                • 琵琶湖の爽やかな湖風<br>
+                                • 京都観光との組み合わせ◎<br>
+                                • 最もリーズナブル
+                            </div>
+                        </td>
+                        <td class="link-cell">
+                            <a href="https://hotel.travel.rakuten.co.jp/hotelinfo/plan/8165?f_nen2=2025&f_tuki1=06&f_tuki2=06&f_nen1=2025&f_heya_su=1&f_hi2=22&f_camp_id=2954652&f_s2=0&f_s1=0&f_y4=0&f_syu=e&f_y3=0&f_hi1=21&f_y2=0&f_otona_su=4&f_y1=0&l-id=" target="_blank">詳細を見る</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="summary">
+            <h2>📋 総合比較・おすすめポイント</h2>
+            
+            <div class="pros-cons">
+                <div class="pros">
+                    <h4>🏆 最もおすすめ：城崎温泉 花まんだら</h4>
+                    <p><strong>理由：</strong></p>
+                    <ul>
+                        <li>活あわび＋但馬牛の豪華グルメ</li>
+                        <li>露天風呂付客室＋4湯貸切無料</li>
+                        <li>朝夕部屋食でゆっくり</li>
+                        <li>ひかりとりなとれのんが行ってたところ</li>
+                        <li>6月は蛍鑑賞シーズン</li>
+                    </ul>
+                </div>
+                
+                <div class="pros">
+                    <h4>💰 コスパ重視：おごと温泉 きくのや</h4>
+                    <p><strong>理由：</strong></p>
+                    <ul>
+                        <li>最も安価（1人24,910円）</li>
+                        <li>琵琶湖ビューで景色抜群</li>
+                        <li>京都観光も楽しめる立地</li>
+                        <li>美肌効果の温泉</li>
+                        <li>アクセスも良好</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pros-cons">
+                <div class="cons">
+                    <h4>🥩 グルメ重視：有馬御苑</h4>
+                    <p><strong>特徴：</strong></p>
+                    <ul>
+                        <li>神戸牛1.5倍増量の限定プラン</li>
+                        <li>楽天トラベルアワード受賞の実績</li>
+                        <li>大阪から最も近い（1時間）</li>
+                        <li>ポイント10倍でお得感あり</li>
+                        <li>金泉・銀泉の名湯</li>
+                    </ul>
+                </div>
+                
+                <div class="cons">
+                    <h4>🏮 温泉情緒：城崎温泉 山本屋</h4>
+                    <p><strong>特徴：</strong></p>
+                    <ul>
+                        <li>外湯7湯巡りで温泉街満喫</li>
+                        <li>温泉街中心の絶好立地</li>
+                        <li>活アワビで海の幸を堪能</li>
+                        <li>半露天風呂付客室</li>
+                        <li>浴衣で情緒ある街歩き</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>🌟 6月旅行のまとめ</h3>
+            <p><strong>天候：</strong>梅雨シーズンですが、室内温泉・部屋食が多いので雨でも安心<br>
+            <strong>気温：</strong>過ごしやすく、露天風呂や温泉街散策に最適<br>
+            <strong>特典：</strong>どの宿も6月ならではの楽しみ（蛍・新緑・旬の食材）が満載</p>
+        </div>
+
+        <div class="legend">
+            <h3>凡例</h3>
+            <p><span style="background-color: #e8f5e9; padding: 3px 8px; border-radius: 3px;">城崎温泉</span> 
+            <span style="background-color: #fff3e0; padding: 3px 8px; border-radius: 3px;">有馬温泉</span> 
+            <span style="background-color: #e1f5fe; padding: 3px 8px; border-radius: 3px;">おごと温泉</span></p>
+            <p>※料金は4名1泊2食付きの税込価格です<br>
+            ※リンクから直接予約サイトへアクセスできます</p>
+        </div>
+    </div>
+
+    <script>
+        // フィルター機能
+        function filterTable() {
+            const locationFilter = document.getElementById('locationFilter').value;
+            const bathFilter = document.getElementById('bathFilter').value;
+            const table = document.getElementById('hotelTable');
+            const rows = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                const hotelName = cells[0].textContent;
+                const bathType = cells[2].textContent;
+
+                let showRow = true;
+
+                if (locationFilter && !hotelName.includes(locationFilter)) {
+                    showRow = false;
+                }
+                if (bathFilter) {
+                    if (bathFilter === '客室付き' && !bathType.includes('客室付き')) {
+                        showRow = false;
+                    }
+                    if (bathFilter === '大浴場' && !bathType.includes('大浴場')) {
+                        showRow = false;
+                    }
+                }
+
+                rows[i].style.display = showRow ? '' : 'none';
+            }
+        }
+
+        // フィルターイベントリスナー
+        document.getElementById('locationFilter').addEventListener('change', filterTable);
+        document.getElementById('bathFilter').addEventListener('change', filterTable);
+    </script>
+</body>
+</html>
